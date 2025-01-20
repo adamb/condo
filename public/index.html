@@ -79,6 +79,31 @@
             border: none;
             border-radius: 6px;
         }
+        .image-gallery {
+            margin-bottom: 30px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -87,6 +112,36 @@
 
         <div class="price-banner">
             $750,000 | 3 Bedroom / 3 Bathroom Condo
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/livingroom.jpeg" alt="Living Room">
+            </div>
+            <div class="gallery-item">
+                <img src="images/dining-bar.jpeg" alt="Dining and Bar Area">
+            </div>
+            <div class="gallery-item">
+                <img src="images/main-bedroom.jpeg" alt="Main Bedroom">
+            </div>
+            <div class="gallery-item">
+                <img src="images/main-bath.jpeg" alt="Main Bathroom">
+            </div>
+            <div class="gallery-item">
+                <img src="images/office-bath.jpeg" alt="Office Bathroom">
+            </div>
+            <div class="gallery-item">
+                <img src="images/kids-bath.jpeg" alt="Kids Bathroom">
+            </div>
+            <div class="gallery-item">
+                <img src="images/walkin-closet.jpeg" alt="Walk-in Closet">
+            </div>
+            <div class="gallery-item">
+                <img src="images/living-balcony.jpeg" alt="Living Room Balcony">
+            </div>
+            <div class="gallery-item">
+                <img src="images/tv-balcony.jpeg" alt="TV Room Balcony">
+            </div>
         </div>
 
         <div class="details-grid">
