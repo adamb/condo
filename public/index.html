@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Condado Tower Apartment for Sale</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e67e22;
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -36,6 +43,132 @@
             font-size: 1.4em;
             color: #2c3e50;
         }
+        .hero-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .hero-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 30px;
+        }
+
+        .hero-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 2.5em;
+            border: none;
+        }
+
+        .hero-content h2 {
+            margin: 10px 0 20px;
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        .price-banner {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .price-tag {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .property-info {
+            display: flex;
+            gap: 20px;
+            font-size: 1.1em;
+        }
+
+        .badge {
+            background-color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .page-nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .page-nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .page-nav a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .floating-contact .contact-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         .contact-button {
             display: block;
             width: 200px;
@@ -114,6 +247,25 @@
             flex-direction: column;
             margin-bottom: 10px;
         }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+        }
+
         .gallery-item img {
             width: 100%;
             height: 250px;
@@ -124,6 +276,54 @@
         .gallery-item:hover img {
             transform: scale(1.05);
         }
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+        }
+
+        .caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         .gallery-label {
             padding: 8px;
             text-align: center;
@@ -134,14 +334,41 @@
             border-bottom-right-radius: 8px;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <nav class="page-nav">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="floating-contact">
+        <a href="#contact" class="contact-button">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+        </a>
+    </div>
     <div class="container">
-        <h1>Stunning Condado Tower Apartment - $800,000</h1>
+        <div class="hero-section">
+            <img src="images/compressed_balcony-view.jpeg" alt="Condo Hero Image">
+            <div class="hero-content">
+                <h1>Luxury Living in Condado Tower</h1>
+                <h2>Stunning 3 Bedroom Apartment with Ocean Views</h2>
+                <a href="#contact" class="cta-button">Schedule a Viewing</a>
+            </div>
+        </div>
 
         <div class="price-banner">
-            3 Bedroom / 3 Bathroom Condo
-            <div style="font-size: 0.8em; margin-top: 10px; color: #666;">For Sale by Owner</div>
+            <div class="price-tag">$800,000</div>
+            <div class="property-info">
+                <span>3 Bedroom</span>
+                <span>3 Bathroom</span>
+                <span>1,441 sqft</span>
+            </div>
+            <div class="badge">For Sale by Owner</div>
         </div>
         
         <a href="mailto:condo@dev.pr?subject=Inquiry&body=I am interested in the condo." class="contact-button">condo@dev.pr</a>
@@ -300,6 +527,37 @@
             </div>
         </div>
     </div>
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="caption"></div>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const captionText = document.querySelector('.caption');
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'block';
+                lightboxImg.src = img.src;
+                captionText.innerHTML = img.parentElement.querySelector('.gallery-label').innerHTML;
+            });
+        });
+
+        document.querySelector('.lightbox .close').addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+
     <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7881e24332f64afe983007e1a92e2764"}'></script>
     <!-- End Cloudflare Web Analytics -->
